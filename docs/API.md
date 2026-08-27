@@ -36,3 +36,18 @@
 | `taxValidated` | boolean | 税务校验通过 |
 
 接口统一返回 `ApiResponse`；业务冲突使用 HTTP 409，参数错误使用 400，未认证使用 401，无权限使用 403。
+
+## V2.0 应付自动化接口
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| GET | `/api/ap/dashboard` | 订单、收货、发票、异常与付款总览 |
+| POST | `/api/ap/purchase-order-lines` | 建立采购订单行 |
+| POST | `/api/ap/purchase-order-lines/{id}/receipts` | 登记收货数量与金额 |
+| POST | `/api/ap/invoices` | 录入供应商发票及行项目 |
+| POST | `/api/ap/invoices/{id}/match` | 执行订单、收货、发票三单匹配 |
+| POST | `/api/admin/ap/invoices/{id}/approve` | 审批匹配通过的发票 |
+| POST | `/api/admin/ap/invoices/{id}/payment-plans` | 生成付款计划 |
+| POST | `/api/admin/ap/payment-plans/{id}/pay` | 登记付款流水 |
+
+匹配按组织、供应商和采购订单行逐项核对，超出容差会生成异常并阻止审批；只有已审批发票可以进入付款计划。
