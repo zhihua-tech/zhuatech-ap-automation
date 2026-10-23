@@ -1,0 +1,49 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "expectedAmount": "#100",
+      "variance": "#0",
+      "excessQty": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "invoiced": "9"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "excessQty": "#1"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "invoiceAmount": "100.01",
+      "tolerance": ".01"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "invoiceAmount": "100.01",
+      "tolerance": "0.01"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "invoiceAmount": "101"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  }
+]

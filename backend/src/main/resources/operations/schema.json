@@ -1,0 +1,93 @@
+{
+  "slug": "ap-automation",
+  "title": "部分收货发票容差匹配",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "ordered",
+      "label": "订单数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "received",
+      "label": "收货数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "invoiced",
+      "label": "开票数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "unitPrice",
+      "label": "订单单价",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "invoiceAmount",
+      "label": "发票金额",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "tolerance",
+      "label": "金额容差",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "expectedAmount",
+      "label": "应匹配金额"
+    },
+    {
+      "key": "variance",
+      "label": "金额差异"
+    },
+    {
+      "key": "excessQty",
+      "label": "超开数量"
+    }
+  ],
+  "description": "将部分收货、分批开票和金额容差同时纳入匹配，输出超开数量和金额差异，不执行付款。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "ordered": "10",
+        "received": "8",
+        "invoiced": "8",
+        "unitPrice": "12.5",
+        "invoiceAmount": "100",
+        "tolerance": "0"
+      }
+    ]
+  }
+}
